@@ -29,7 +29,7 @@ if($method == 'POST')
 	$mail->Username = 'rachnarke@gmail.com';
 	$mail->Password = 'av!k2010';
 	//Set who the message is to be sent from
-	$mail->setFrom('rachnarke@gmail.com', 'Rachna Bhatnagar');
+	$mail->setFrom($Email, 'Rachna Bhatnagar');
 	$mail-Subject = 'Hello World';
 	$mail->Body = 'A test mail';
 	$mail->AddAddress = 'rachnaggn@yahoo.com';
