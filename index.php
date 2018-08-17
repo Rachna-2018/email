@@ -3,7 +3,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 //Load Composer's autoloader
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 
@@ -22,12 +22,14 @@ if($method == 'POST')
  	$mail = new PHPMailer(true);
 	$mail->isSMTP();
 	$mail->SMTPAuth = true;
-	$mail->SMTPsecure = 'ssl';
+	$mail->SMTPsecure = 'tls';
 	$mail->HOST = 'gmail.smtp.com';
-	$mail->port = '465';
+	$mail->port = '587';
 	$mail->isHTML();
 	$mail->Username = 'rachnarke@gmail.com';
 	$mail->Password = 'av!k2010';
+	//Set who the message is to be sent from
+	$mail->setFrom('rachnarke@gmail.com', 'Rachna Bhatnagar');
 	$mail-Subject = 'Hello World';
 	$mail->Body = 'A test mail';
 	$mail->AddAddress = 'rachnaggn@yahoo.com';
