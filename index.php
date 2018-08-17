@@ -1,4 +1,9 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+//Load Composer's autoloader
+require 'vendor/autoload.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 
@@ -13,17 +18,24 @@ if($method == 'POST')
 	    
 	$Email = $json->queryResult->parameters->Email;	     
 	if (strlen($Email) >1){
+	
+ 	$mail = new PHPMailer(true);
+	$mail->isSMTP();
+	$mail->SMTPAuth = true;
+	$mail->SMTPsecure = 'ssl';
+	$mail->HOST = 'gmail.smtp.com';
+	$mail->port = '465';
+	$mail->isHTML();
+	$mail->Username = 'rachnarke@gmail.com';
+	$mail->Password = 'av!k2010';
+	$mail-Subject = 'Hello World';
+	$mail->Body = 'A test mail';
+	$mail->AddAddress = 'rachnaggn@yahoo.com';
+	$mail->send();
+		
  
- 
-	$to      = $Email;
-	$subject = 'Chatbot - Backlog Summary';
-	$message = 'We have 43,234 Backlogs, 5400 Exceptions and 50 Escalations effecting the total revenue of 5 billion';
-	/*$headers = 'From: rachnarke@gmail.com' . "\r\n" .
-    'Reply-To: rachnarke@gmail.com' . "\r\n" .
-    'X-Mailer: PHP/' . phpversion();*/
-
 	mail($to, $subject, $message);
-   $speech = 'I have summarized the details and sent an email.. please check your inbox';
+   	$speech = 'I have summarized the details and sent an email.. please check your inbox';
 
     
     }
