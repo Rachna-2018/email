@@ -1,9 +1,5 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
 
-//Load Composer's autoloader
-require '../vendor/autoload.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 
@@ -12,7 +8,11 @@ $method = $_SERVER['REQUEST_METHOD'];
 
 if($method == 'POST')
 {
-	
+	use PHPMailer\PHPMailer\PHPMailer;
+	use PHPMailer\PHPMailer\Exception;
+
+	//Load Composer's autoloader
+	require '../vendor/autoload.php';
 	$requestBody = file_get_contents('php://input');
 	$json = json_decode($requestBody);
 	    
