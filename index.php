@@ -19,7 +19,7 @@ if($method == 'POST')
 	$Email = $json->queryResult->parameters->Email;	     
 	if (strlen($Email) >1){
 	
- 	$mail = new PHPMailer(true);
+ 	$mail = new PHPMailer(false);
 	$mail->isSMTP();
 	$mail->SMTPAuth = true;
 	$mail->SMTPsecure = 'tls';
