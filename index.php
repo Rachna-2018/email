@@ -8,43 +8,6 @@ $method = $_SERVER['REQUEST_METHOD'];
 
 if($method == 'POST')
 {
-	/*//use PHPMailer\PHPMailer\PHPMailer;
-	//use PHPMailer\PHPMailer\Exception;
-
-	//Load Composer's autoloader
-	//require '../vendor/autoload.php';
-	$requestBody = file_get_contents('php://input');
-	$json = json_decode($requestBody);
-	    
-	$Email = $json->queryResult->parameters->Email;	     
-	if (strlen($Email) >1){
-	
- 	$mail = new PHPMailer(true);
-	$mail->isSMTP();
-	$mail->SMTPAuth = true;
-	$mail->SMTPsecure = 'tls';
-	$mail->HOST = 'gmail.smtp.com';
-	$mail->port = '587';
-	$mail->isHTML();
-	$mail->Username = 'rachnarke@gmail.com';
-	$mail->Password = 'av!k2010';
-	//Set who the message is to be sent from
-	$mail->setFrom($Email, 'Rachna Bhatnagar');
-	$mail-Subject = 'Hello World';
-	$mail->Body = 'A test mail';
-	$mail->AddAddress = 'rachnaggn@yahoo.com';
-	$mail->send();
-		
- 
-	mail($to, $subject, $message);
-   	$speech = 'I have summarized the details and sent an email.. please check your inbox';
-
-    
-    }
-	$response = new \stdClass();
-    	$response->fulfillmentText = $speech;
-    	$response->source = "webhook";
-	echo json_encode($response);*/
 	
 	
 	$requestBody = file_get_contents('php://input');
@@ -55,12 +18,14 @@ if($method == 'POST')
 	$emailFrom = "rachnarke@gmail.com";
 	$emailFromName = "Rachna Bhatnagar";
 	$emailToName = "Rachna Bhatnagar";
-	use PHPMailer\PHPMailer\PHPMailer;
-	use PHPMailer\PHPMailer\Exception;
+	//use PHPMailer\PHPMailer\PHPMailer;
+	//use PHPMailer\PHPMailer\Exception;
 
-	require '/src/Exception.php';
+	/*require "/src/Exception.php";
 	require "/src/PHPMailer.php";
-	require "/src/SMTP.php";
+	require "/src/SMTP.php";*/
+	 require("./class.phpmailer.php");
+    	require("./class.smtp.php");
 
 	$mail = new PHPMailer();
 	$mail->isSMTP(); 
