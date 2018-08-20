@@ -47,7 +47,7 @@ if($method == 'POST')
 	echo json_encode($response);*/
 	
 	$smtpUsername = 'rachnarke@gmail.com';
-	$smtpPassword =	'av!k2010';
+	$smtpPassword =	'avik17jan';
 	$emailFrom = 'rachnarke@gmail.com';
 	$emailFromName = 'Rachna Bhatnagar';
 	$emailToName = 'Rachna Bhatnagar';
