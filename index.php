@@ -19,7 +19,7 @@ if($method == 'POST')
 	$Email = $json->queryResult->parameters->Email;	     
 	if (strlen($Email) >1){
 	
- 	$mail = new PHPMailer(false);
+ 	$mail = new PHPMailer(true);
 	$mail->isSMTP();
 	$mail->SMTPAuth = true;
 	$mail->SMTPsecure = 'tls';
@@ -27,7 +27,7 @@ if($method == 'POST')
 	$mail->port = '587';
 	$mail->isHTML();
 	$mail->Username = 'rachnarke@gmail.com';
-	$mail->Password = 'avik17jan';
+	$mail->Password = 'av!k2010';
 	//Set who the message is to be sent from
 	$mail->setFrom($Email, 'Rachna Bhatnagar');
 	$mail-Subject = 'Hello World';
