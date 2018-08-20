@@ -20,8 +20,8 @@ if($method == 'POST')
 	$emailToName = "Rachna Bhatnagar";
 	
 	echo $Email; echo $smtpUsername; echo $smtpPassword; echo $emailFrom; echo $emailFromName; echo $emailToName;
-	use PHPMailer\PHPMailer\PHPMailer;
-	use PHPMailer\PHPMailer\Exception;
+	use \PHPMailer\PHPMailer;
+	use \PHPMailer\Exception;
 
 	require "/Exception.php";
 	require "/PHPMailer.php";
@@ -30,7 +30,7 @@ if($method == 'POST')
     	//require("./class.smtp.php");
 	//require_once('class.phpmailer.php');
 	//require_once('class.smtp.php');
-	$mail = new PHPMailer();
+	$mail = new PHPMailer;
 	$mail->isSMTP(); 
 	echo $mail->isSMTP(); 
 	//$mail->SMTPDebug = 2; // 0 = off (for production use) - 1 = client messages - 2 = client and server messages
