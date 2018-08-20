@@ -12,8 +12,8 @@ if($method == 'POST')
 	
 	$requestBody = file_get_contents('php://input');
 	$json = json_decode($requestBody);
-	$Email = $json->queryResult->parameters->Email;	 
-	$smtpUsername = "rachnarke@gmail.com";
+	$to = $json->queryResult->parameters->Email;	 
+	/*$smtpUsername = "rachnarke@gmail.com";
 	$smtpPassword =	"avik17jan";
 	$emailFrom = "rachnarke@gmail.com";
 	$emailFromName = "Rachna Bhatnagar";
@@ -21,7 +21,7 @@ if($method == 'POST')
 	
 	//echo $Email; echo $smtpUsername; echo $smtpPassword; echo $emailFrom; echo $emailFromName; echo $emailToName;
 	/*use \PHPMailer\PHPMailer;
-	use \PHPMailer\Exception;*/
+	use \PHPMailer\Exception;
 
 	require 'Exception.php';
 	require 'PHPMailer.php';
@@ -47,12 +47,36 @@ if($method == 'POST')
 	$mail->msgHTML("test body"); //$mail->msgHTML(file_get_contents('contents.html'), __DIR__); //Read an HTML message body from an external file, convert referenced images to embedded,
 	$mail->AltBody = 'HTML messaging not supported';
 	// $mail->addAttachment('images/phpmailer_mini.png'); //Attach an image file
-	$mail->send();
+	$mail->send();*/
+	
+	require_once "Mail.php";
+$from = 'rachnarke@gmail.com';
+//$to = 'rachnarke@gmail.com';
+$username = "rachnarke@gmail";
+$password = "avik17jan";
+$subject = 'Hi!';
+
+$body = "Hi,\n\nHow are you?";
+
+$headers = array(
+					'From' => $from,
+					'To' => $to,
+					'Subject' => $subject
+				);
+
+$smtp = & Mail::factory("smtp",array(
+				'host' => 'smtp.gmail.com',
+				'auth' => true,
+				'port' = '587',
+				'username' => $username,
+				'password' =>  $password));
+
+$smtp->send($to,$headers,$body);
+
 	
 	
-	if(!$mail->send()){ $speech = "Mailer Error: ";}
-	else{ $speech =  "Message sent!";}
-// $speech =  "Message sent!";
+	$speech =  "Message sent!";
+
 	$response = new \stdClass();
     	$response->fulfillmentText = $speech;
     	$response->source = "webhook";
