@@ -18,16 +18,16 @@ if($method == 'POST')
 	$emailFrom = 'rachnarke@gmail.com';
 	$emailFromName = 'Rachna Bhatnagar';
 	$emailToName = 'Rachna Bhatnagar';
-	//use PHPMailer\PHPMailer\PHPMailer;
-	//use PHPMailer\PHPMailer\Exception;
+	use PHPMailer\PHPMailer\PHPMailer;
+	use PHPMailer\PHPMailer\Exception;
 
 	/*require "/src/Exception.php";
 	require "/src/PHPMailer.php";
 	require "/src/SMTP.php";*/
 	// require("./class.phpmailer.php");
     	//require("./class.smtp.php");
-	require_once('/src/class.phpmailer.php');
-	require_once('/src/class.smtp.php');
+	require_once('class.phpmailer.php');
+	require_once('class.smtp.php');
 	$mail = new PHPMailer();
 	$mail->isSMTP(); 
 	//$mail->SMTPDebug = 2; // 0 = off (for production use) - 1 = client messages - 2 = client and server messages
