@@ -23,9 +23,9 @@ if($method == 'POST')
 	/*use \PHPMailer\PHPMailer;
 	use \PHPMailer\Exception;*/
 
-	//require "/Exception.php";
-	//require "/PHPMailer.php";
-	//require "/SMTP.php";
+	require "Exception.php";
+	require "PHPMailer.php";
+	require "SMTP.php";
 	// require("./class.phpmailer.php");
     	//require("./class.smtp.php");
 	//require_once('class.phpmailer.php');
