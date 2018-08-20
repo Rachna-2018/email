@@ -77,9 +77,13 @@ if($method == 'POST')
 	$mail->AltBody = 'HTML messaging not supported';
 	// $mail->addAttachment('images/phpmailer_mini.png'); //Attach an image file
 
-	if(!$mail->send()){ echo "Mailer Error: " . $mail->ErrorInfo;}
-	else{ echo "Message sent!";}
+	if(!$mail->send()){ $speech = "Mailer Error: ";}
+	else{ $speech =  "Message sent!";}
 
+	$response = new \stdClass();
+    	$response->fulfillmentText = $speech;
+    	$response->source = "webhook";
+	echo json_encode($response);
 }
 else
 {
