@@ -23,13 +23,13 @@ if($method == 'POST')
 	use PHPMailer\PHPMailer\PHPMailer;
 	use PHPMailer\PHPMailer\Exception;
 
-	/*require "/src/Exception.php";
-	require "/src/PHPMailer.php";
-	require "/src/SMTP.php";*/
+	require "/Exception.php";
+	require "/PHPMailer.php";
+	require "/SMTP.php";
 	// require("./class.phpmailer.php");
     	//require("./class.smtp.php");
-	require_once('class.phpmailer.php');
-	require_once('class.smtp.php');
+	//require_once('class.phpmailer.php');
+	//require_once('class.smtp.php');
 	$mail = new PHPMailer();
 	$mail->isSMTP(); 
 	echo $mail->isSMTP(); 
