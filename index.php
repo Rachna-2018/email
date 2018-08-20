@@ -23,9 +23,9 @@ if($method == 'POST')
 	/*use \PHPMailer\PHPMailer;
 	use \PHPMailer\Exception;*/
 
-	require "Exception.php";
-	require "PHPMailer.php";
-	require "SMTP.php";
+	require 'Exception.php';
+	require 'PHPMailer.php';
+	require 'SMTP.php';
 	// require("./class.phpmailer.php");
     	//require("./class.smtp.php");
 	//require_once('class.phpmailer.php');
@@ -35,7 +35,7 @@ if($method == 'POST')
 	//echo $mail->isSMTP(); 
 	//$mail->SMTPDebug = 2; // 0 = off (for production use) - 1 = client messages - 2 = client and server messages
 	$mail->Host = "smtp.gmail.com";
-	echo $mail->Host ; // use $mail->Host = gethostbyname('smtp.gmail.com'); // if your network does not support SMTP over IPv6
+	//echo $mail->Host ; // use $mail->Host = gethostbyname('smtp.gmail.com'); // if your network does not support SMTP over IPv6
 	$mail->Port = 587; // TLS only
 	$mail->SMTPSecure = 'tls'; // ssl is depracated
 	$mail->SMTPAuth = true;
@@ -52,7 +52,7 @@ if($method == 'POST')
 	
 	if(!$mail->send()){ $speech = "Mailer Error: ";}
 	else{ $speech =  "Message sent!";}
- $speech =  "Message sent!";
+// $speech =  "Message sent!";
 	$response = new \stdClass();
     	$response->fulfillmentText = $speech;
     	$response->source = "webhook";
