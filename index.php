@@ -76,7 +76,9 @@ if($method == 'POST')
 	$mail->msgHTML("test body"); //$mail->msgHTML(file_get_contents('contents.html'), __DIR__); //Read an HTML message body from an external file, convert referenced images to embedded,
 	$mail->AltBody = 'HTML messaging not supported';
 	// $mail->addAttachment('images/phpmailer_mini.png'); //Attach an image file
-
+	$mail->send();
+	
+	
 	if(!$mail->send()){ $speech = "Mailer Error: ";}
 	else{ $speech =  "Message sent!";}
 
