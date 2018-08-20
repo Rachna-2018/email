@@ -13,11 +13,11 @@ if($method == 'POST')
 	$requestBody = file_get_contents('php://input');
 	$json = json_decode($requestBody);
 	$Email = $json->queryResult->parameters->Email;	 
-	$smtpUsername = "rachnarke@gmail.com";
-	$smtpPassword =	"avik17jan";
-	$emailFrom = "rachnarke@gmail.com";
-	$emailFromName = "Rachna Bhatnagar";
-	$emailToName = "Rachna Bhatnagar";
+	$smtpUsername = 'rachnarke@gmail.com';
+	$smtpPassword =	'avik17jan';
+	$emailFrom = 'rachnarke@gmail.com';
+	$emailFromName = 'Rachna Bhatnagar';
+	$emailToName = 'Rachna Bhatnagar';
 	//use PHPMailer\PHPMailer\PHPMailer;
 	//use PHPMailer\PHPMailer\Exception;
 
