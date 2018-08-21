@@ -22,7 +22,7 @@ if($method == 'POST')
 	{
 		$username    = "SANYAM_K";
     		$password    = "Welcome@123";
-    		$json_url    = "http://74.201.240.43:8000/ChatBot/Sample_chatbot/deal_info.xsjs?COMMAND=$com&EMAIL=$Emailidm&CUST_NAME=$name&AREA_NUM=$area_num&ROOMS=$rooms&BUILT_YEAR=$builtyear";
+    		$json_url    = "http://74.201.240.43:8000/ChatBot/Sample_chatbot/deal_info.xsjs?COMMAND=$com&EMAIL=$Emailid&CUST_NAME=$name&AREA_NUM=$area_num&ROOMS=$rooms&BUILT_YEAR=$builtyear";
 		$ch      = curl_init( $json_url );
     		$options = array(
         	CURLOPT_SSL_VERIFYPEER => false,
