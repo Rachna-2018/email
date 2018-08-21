@@ -33,11 +33,13 @@ if($method == 'POST')
     		curl_setopt_array( $ch, $options );
 		$json = curl_exec( $ch );
 		$someobj = json_decode($json,true);
-		$speech = "your house booked with ";
+		
 		foreach ($someobj["results"] as $value) 
 		{
-			$speech .= $value["DEAL_NO"]. "  ".$value["EMAIL"]."  ".$value["CUST_NAME"]. "  ".$value["AREA_NUM"]. "  ".$value["ROOMS"]. "  ".$value["BUILT_YEAR"];
-			$speech .= "\r\n";
+			//$speech .= $value["DEAL_NO"]. "  ".$value["EMAIL"]."  ".$value["CUST_NAME"]. "  ".$value["AREA_NUM"]. "  ".$value["ROOMS"]. "  ".$value["BUILT_YEAR"];
+			//$speech .= "\r\n";
+			$speech = $value["CUST_NAME"].", Your house has booked with booking id ".$value["DEAL_NO"].
+				$speech .= "\r\n";
 			
 			
        		}	
