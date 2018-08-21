@@ -12,70 +12,38 @@ if($method == 'POST')
 	
 	$requestBody = file_get_contents('php://input');
 	$json = json_decode($requestBody);
-	$to = $json->queryResult->parameters->Email;	 
-	/*$smtpUsername = "rachnarke@gmail.com";
-	$smtpPassword =	"avik17jan";
-	$emailFrom = "rachnarke@gmail.com";
-	$emailFromName = "Rachna Bhatnagar";
-	$emailToName = "Rachna Bhatnagar";
-	
-	//echo $Email; echo $smtpUsername; echo $smtpPassword; echo $emailFrom; echo $emailFromName; echo $emailToName;
-	/*use \PHPMailer\PHPMailer;
-	use \PHPMailer\Exception;
-
-	require 'Exception.php';
-	require 'PHPMailer.php';
-	require 'SMTP.php';
-	// require("./class.phpmailer.php");
-    	//require("./class.smtp.php");
-	//require_once('class.phpmailer.php');
-	//require_once('class.smtp.php');
-	$mail = new PHPMailer;
-	$mail->isSMTP(); 
-	//echo $mail->isSMTP(); 
-	//$mail->SMTPDebug = 2; // 0 = off (for production use) - 1 = client messages - 2 = client and server messages
-	$mail->Host = "smtp.gmail.com";
-	//echo $mail->Host ; // use $mail->Host = gethostbyname('smtp.gmail.com'); // if your network does not support SMTP over IPv6
-	$mail->Port = 587; // TLS only
-	$mail->SMTPSecure = 'tls'; // ssl is depracated
-	$mail->SMTPAuth = true;
-	$mail->Username = $smtpUsername;
-	$mail->Password = $smtpPassword;
-	$mail->setFrom($emailFrom, $emailFromName);
-	$mail->addAddress($Email, $emailToName);
-	$mail->Subject = 'PHPMailer GMail SMTP test';
-	$mail->msgHTML("test body"); //$mail->msgHTML(file_get_contents('contents.html'), __DIR__); //Read an HTML message body from an external file, convert referenced images to embedded,
-	$mail->AltBody = 'HTML messaging not supported';
-	// $mail->addAttachment('images/phpmailer_mini.png'); //Attach an image file
-	$mail->send();*/
-	
-	require_once "Mail.php";
-$from = 'rachnarke@gmail.com';
-//$to = 'rachnarke@gmail.com';
-$username = "rachnarke@gmail";
-$password = "avik17jan";
-$subject = 'Hi!';
-
-$body = "Hi,\n\nHow are you?";
-
-$headers = array(
-					'From' => $from,
-					'To' => $to,
-					'Subject' => $subject
-				);
-
-$smtp = & Mail::factory("smtp",array(
-				'host' => 'smtp.gmail.com',
-				'auth' => true,
-				'port' = '587',
-				'username' => $username,
-				'password' =>  $password));
-
-$smtp->send($to,$headers,$body);
-
+	$Emailid = $json->queryResult->parameters->Emailid;
+	$rooms = $json->queryResult->parameters->rooms;
+	$builtyear = $json->queryResult->parameters->builtyear;
+	$name = $json->queryResult->parameters->name;
+	$area_num = $json->queryResult->parameters->area_num;
+	$com = $json->queryResult->parameters->command;
+	if($com == 'closedeal')
+	{
+		$username    = "SANYAM_K";
+    		$password    = "Welcome@123";
+    		$json_url    = "http://74.201.240.43:8000/ChatBot/Sample_chatbot/deal_info.xsjs?COMMAND=$com&EMAIL=$Emailidm&CUST_NAME=$name&AREA_NUM=$area_num&ROOMS=$rooms&BUILT_YEAR=$builtyear";
+		$ch      = curl_init( $json_url );
+    		$options = array(
+        	CURLOPT_SSL_VERIFYPEER => false,
+        	CURLOPT_RETURNTRANSFER => true,
+        	CURLOPT_USERPWD        => "{$username}:{$password}",
+        	CURLOPT_HTTPHEADER     => array( "Accept: application/json" ),
+    		);
+    		curl_setopt_array( $ch, $options );
+		$json = curl_exec( $ch );
+		$someobj = json_decode($json,true);
+		$speech = "your house booked with ";
+		foreach ($someobj["results"] as $value) 
+		{
+			$speech .= $value["DEAL_NO"]. "  ".$value["EMAIL"]."  ".$value["CUST_NAME"]. "  ".$value["AREA_NUM"]. "  ".$value["ROOMS"]. "  ".$value["BUILT_YEAR"];
+			$speech .= "\r\n";
+			
+			
+       		}	
+	}	
 	
 	
-	$speech =  "Message sent!";
 
 	$response = new \stdClass();
     	$response->fulfillmentText = $speech;
